@@ -46,6 +46,17 @@ namespace MhLabs.DateTimeExtensions.Tests
         }
 
         [Fact]
+        public void Should_Convert_To_Client_DateTime_With_Local_Kind()
+        {
+            LocalTimeZoneConfig.Init(TimeZones.UsEastern);
+
+            var date = new DateTime(2099, 12, 5, 13, 17, 27, DateTimeKind.Local);
+            var clientFormat = date.ToClientDateTime();
+
+            clientFormat.Should().Be("2099-12-05T13:17:27-05:00");
+        }
+
+        [Fact]
         public void Should_Convert_To_Client_DateTime()
         {
             LocalTimeZoneConfig.Init(TimeZones.Utc);

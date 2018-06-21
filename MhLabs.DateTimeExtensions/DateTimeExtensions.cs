@@ -24,9 +24,12 @@ namespace MhLabs.DateTimeExtensions
 
         private static string ToClientFormat(DateTime dateTime, string format)
         {
-            var offset = new DateTimeOffset(dateTime, LocalTimeZoneConfig.TimeZone.GetUtcOffset(dateTime));
-            var result = offset.ToString(format);
+            if (dateTime == DateTime.MinValue) return string.Empty;
 
+            var offsetSpan = LocalTimeZoneConfig.TimeZone.GetUtcOffset(dateTime);
+            var offset = new DateTimeOffset(dateTime.Ticks, offsetSpan);
+
+            var result = offset.ToString(format);
             return result;
         }
 
