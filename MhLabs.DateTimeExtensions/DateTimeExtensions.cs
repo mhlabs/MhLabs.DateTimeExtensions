@@ -22,6 +22,16 @@ namespace MhLabs.DateTimeExtensions
             return ToClientFormat(dateTime, "yyyy-MM-dd'T'00:00:00zzz");
         }
 
+        public static string FormatClientTime(this DateTime dateTime)
+        {
+            return ToClientFormat(dateTime, "HH:mm");
+        }
+
+        public static string FormatClientDate(this DateTime dateTime)
+        {
+            return ToClientFormat(dateTime, "yyyy-MM-dd");
+        }
+
         private static string ToClientFormat(DateTime dateTime, string format)
         {
             if (dateTime == DateTime.MinValue) return string.Empty;
