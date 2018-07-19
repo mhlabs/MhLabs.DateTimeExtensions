@@ -1,4 +1,5 @@
 using System;
+using TimeZoneConverter;
 
 namespace MhLabs.DateTimeExtensions
 {
@@ -16,13 +17,13 @@ namespace MhLabs.DateTimeExtensions
 
         public static TimeZoneInfo Init(string timeZoneId)
         {
-            _tz = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
+            _tz = TZConvert.GetTimeZoneInfo(timeZoneId);
             return _tz;
         }
 
         public static TimeZoneInfo Create(string timeZoneId)
         {
-            var zoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
+            var zoneInfo = TZConvert.GetTimeZoneInfo(timeZoneId);
             return zoneInfo;
         }
 
