@@ -17,6 +17,15 @@ namespace MhLabs.DateTimeExtensions.Tests
         {
             var sweden = LocalTimeZoneConfig.Init(TimeZones.Sweden);
 
+            var timeIn = DateTime.UtcNow.ToLocal();
+            timeIn.Should().BeAfter(DateTime.UtcNow);
+        }
+
+        [Fact]
+        public void Should_Convert_Utc_To_Local_Time()
+        {
+            var sweden = LocalTimeZoneConfig.Init(TimeZones.Sweden);
+
             var timeIn = DateTime.Now.In(sweden);
             timeIn.Should().BeAfter(DateTime.UtcNow);
 
