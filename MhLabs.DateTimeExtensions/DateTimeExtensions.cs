@@ -10,6 +10,11 @@ namespace MhLabs.DateTimeExtensions
             return result;
         }
 
+        public static DateTime ToCreationDate(this DateTime dateTime)
+        {
+            return dateTime == DateTime.MinValue ? DateTime.UtcNow : dateTime;
+        }
+
         public static DateTime ToLocal(this DateTime dateTime) => In(dateTime, LocalTimeZoneConfig.TimeZone);
 
         public static string ToClientDateTime(this DateTime dateTime)

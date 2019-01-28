@@ -22,6 +22,24 @@ namespace MhLabs.DateTimeExtensions.Tests
         }
 
         [Fact]
+        public void Should_Not_Change_Creation_Date()
+        {
+            LocalTimeZoneConfig.Init(TimeZones.Sweden);
+            var time = DateTime.Now;
+            var timeIn = time.ToCreationDate();
+            timeIn.Should().Be(time);
+        }
+
+        [Fact]
+        public void Should_Not_Have_DateTime_Min_Value()
+        {
+            LocalTimeZoneConfig.Init(TimeZones.Sweden);
+
+            var timeIn = DateTime.MinValue.ToCreationDate();
+            timeIn.Should().NotBe(DateTime.MinValue);
+        }
+
+        [Fact]
         public void Should_Convert_Utc_To_Local_Time()
         {
             var sweden = LocalTimeZoneConfig.Init(TimeZones.Sweden);
