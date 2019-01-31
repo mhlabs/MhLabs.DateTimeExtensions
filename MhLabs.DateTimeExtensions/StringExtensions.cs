@@ -29,7 +29,7 @@ namespace MhLabs.DateTimeExtensions
             return result;
         }
 
-        private static DateTime? ParseLocal(string dateTimeValue)
+        public static DateTime? ParseLocal(string dateTimeValue)
         {
             if (string.IsNullOrWhiteSpace(dateTimeValue)) return null;
 
@@ -43,7 +43,7 @@ namespace MhLabs.DateTimeExtensions
             return dateTime;
         }
 
-        private static DateTime? ConvertToLocal(string dateTimeValue)
+        public static DateTime? ConvertToLocal(string dateTimeValue)
         {
             if (!DateTimeOffset.TryParse(dateTimeValue, out var offset)) return null;
             var result = offset.UtcDateTime.ToLocal();
